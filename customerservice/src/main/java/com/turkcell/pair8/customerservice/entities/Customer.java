@@ -5,33 +5,32 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.Date;
 import java.util.List;
 
-@Table(name = "customers")
 @Entity
+@Table(name = "customers")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "middle_name")
     private String middleName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "gender")
-    private String gender;
+    private Gender gender;
 
     @Column(name = "mother_name")
     private String motherName;
@@ -39,13 +38,14 @@ public class Customer {
     @Column(name = "father_name")
     private String fatherName;
 
-    @Column(name = "birth_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "birth_date", nullable = false)
     private Date birthDate;
 
-    @Column(name = "nationality_id")
+    @Column(name = "nationality_id", nullable = false, unique = true)
     private String nationalityID;
 
-    @Column(name = "email")
+    @Column(nullable = false)
     private String email;
 
     @Column(name = "home_phone_number")
@@ -57,9 +57,9 @@ public class Customer {
     @Column(name = "fax_number")
     private String faxNumber;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Account> accounts;
 }

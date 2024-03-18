@@ -6,27 +6,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "accounts")
 @Entity
+@Table(name = "accounts")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account {
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name="name")
+    @Column(nullable = false)
     private String name;
 
-    @Column(name="number")
+    @Column(nullable = false)
     private String number;
 
-    @Column(name="status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AccountStatus status;
 
-    @Column(name="type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private AccountType type;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="customer_id", nullable=false)
+    private Customer customer;
 }
