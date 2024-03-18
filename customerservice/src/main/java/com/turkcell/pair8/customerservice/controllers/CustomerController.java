@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/customer")
 @AllArgsConstructor
 public class CustomerController {
-private CustomerService customerService;
+    private CustomerService customerService;
 }
