@@ -17,18 +17,18 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name="name", nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column(name="number", nullable = false)
     private String number;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name="status", nullable = false)
     private AccountStatus status;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name="type", nullable = false)
     private AccountType type;
 
     @ManyToOne(fetch = FetchType.LAZY)

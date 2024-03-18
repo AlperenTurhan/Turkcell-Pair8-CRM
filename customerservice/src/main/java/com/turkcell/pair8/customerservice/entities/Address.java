@@ -17,16 +17,16 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name="city", nullable = false)
     private String city;
 
-    @Column(nullable = false)
+    @Column(name="street", nullable = false)
     private String street;
 
     @Column(name="house_number", nullable = false)
     private String houseNumber;
 
-    @Column(nullable = false)
+    @Column(name="description", nullable = false)
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
