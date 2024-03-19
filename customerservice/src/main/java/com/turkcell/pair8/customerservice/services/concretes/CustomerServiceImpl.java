@@ -16,10 +16,24 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
-        List<SearchCustomerResponse> searchResults = customerRepository.search(request);
+        // Özellikleri bireysel parametreler olarak çıkar
+        int nationalityId = request.getNationalityID();
+        String customerId = request.getCustomerID();
+        String accountNumber = request.getAccountNumber();
+        String gsmNumber = request.getGsmNumber();
+        String firstName = request.getFirstName();
+        String lastName = request.getLastName();
+
+        // Repository metodunu güncellenmiş parametrelerle çağır
+        List<SearchCustomerResponse> searchResults = customerRepository.search(nationalityId, customerId,
+                                                                                accountNumber, gsmNumber,
+                                                                                firstName, lastName);
+
+        // Sonuçları kontrol et ve dön
         if (searchResults.isEmpty()) {
             throw new BusinessException("No customer found! Would you like to create the customer?");
         }
-        return customerRepository.search(request);
+        return searchResults;
     }
+
 }
