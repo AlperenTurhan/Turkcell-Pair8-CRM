@@ -15,9 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
+    @Column(name = "id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "customer_id", nullable = false, unique = true)
+    private String customerID;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -43,7 +47,7 @@ public class Customer {
     private Date birthDate;
 
     @Column(name = "nationality_id", nullable = false, unique = true)
-    private String nationalityID;
+    private int nationalityID;
 
     @Column(nullable = false)
     private String email;
@@ -51,8 +55,8 @@ public class Customer {
     @Column(name = "home_phone_number")
     private String homePhoneNumber;
 
-    @Column(name = "mobile_phone_number")
-    private String mobilePhoneNumber;
+    @Column(name = "gsm_number")
+    private String gsmNumber;
 
     @Column(name = "fax_number")
     private String faxNumber;
