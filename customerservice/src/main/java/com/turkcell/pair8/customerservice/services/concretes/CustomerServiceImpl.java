@@ -8,18 +8,17 @@ import com.turkcell.pair8.customerservice.services.dtos.customer.request.AddCust
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import com.turkcell.pair8.customerservice.services.mappers.CustomerMapper;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@NoArgsConstructor
-@AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
         // Özellikleri bireysel parametreler olarak çıkar
@@ -44,8 +43,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void add(AddCustomerRequest request) {
+        customersWithSameNationalityIDShouldNotExist(request.getNationalityID());
         Customer customer = CustomerMapper.INSTANCE.customerFromAddRequest(request);
         customerRepository.save(customer);
     }
 
+    public void customersWithSameNationalityIDShouldNotExist(int nationalityID) {
+        if (customerRepository.existsByNationalityID(nationalityID)) {
+            throw new BusinessException("Customer with the same nationality ID already exists!");
+        }
+    }
 }

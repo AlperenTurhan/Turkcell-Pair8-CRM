@@ -27,4 +27,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
                                         @Param("firstName") String firstName,
                                         @Param("lastName") String lastName);
 
+    boolean existsByNationalityID(int nationalityID);
 }
