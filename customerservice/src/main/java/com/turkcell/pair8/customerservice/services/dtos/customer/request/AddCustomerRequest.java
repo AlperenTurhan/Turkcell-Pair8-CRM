@@ -2,7 +2,6 @@ package com.turkcell.pair8.customerservice.services.dtos.customer.request;
 
 import com.turkcell.pair8.customerservice.entities.Gender;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,5 +27,4 @@ public class AddCustomerRequest {
     private String motherName;
     @NotBlank
     private int nationalityID;
-
 }
