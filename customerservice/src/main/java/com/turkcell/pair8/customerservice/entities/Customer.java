@@ -21,7 +21,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "customer_id", nullable = false, unique = true)
+    @Column(name = "customer_id", unique = true) //TODO: Bakılacak
     private String customerID;
 
     @Column(name = "first_name", nullable = false)
@@ -50,8 +50,8 @@ public class Customer {
     @Column(name = "nationality_id", nullable = false, unique = true)
     private int nationalityID;
 
-    @Column(nullable = false)
-    private String email;
+    //@Column(nullable = false)
+    //private String email;
 
     @Column(name = "home_phone_number")
     private String homePhoneNumber;
