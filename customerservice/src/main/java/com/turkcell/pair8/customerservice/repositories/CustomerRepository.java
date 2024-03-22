@@ -1,31 +1,23 @@
 package com.turkcell.pair8.customerservice.repositories;
 
 import com.turkcell.pair8.customerservice.entities.Customer;
+import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-    @Query("SELECT new com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse" +
-            "(c.customerID, c.firstName, c.middleName, c.lastName, c.nationalityID)" +
-            " FROM Customer c LEFT JOIN c.accounts a" +
-            " WHERE (:nationalityID IS NULL OR c.nationalityID = :nationalityID)" +
-            " AND (:customerID IS NULL OR c.customerID = :customerID)" +
-            " AND (:accountNumber IS NULL OR a.number = :accountNumber)" +
-            " AND (:gsmNumber IS NULL OR c.gsmNumber = :gsmNumber)" +
-            " AND (:firstName IS NULL OR c.firstName LIKE %:firstName%)" +
-            " AND (:lastName IS NULL OR c.lastName LIKE %:lastName%)")
-    List<SearchCustomerResponse> search(@Param("nationalityID") Integer nationalityID,
-                                        @Param("customerID") String customerID,
-                                        @Param("accountNumber") String accountNumber,
-                                        @Param("gsmNumber") String gsmNumber,
-                                        @Param("firstName") String firstName,
-                                        @Param("lastName") String lastName);
+    @Query("Select new com.turkcell.customerservice.services.dtos.responses." +
+            "SearchCustomerResponse(c.customerId, c.firstName, c.lastName, c.secondName, c.nationalityId)" +
+            " from Customer c" +
+            " where ( :#{#request.getNationalityId()} <= 0 or c.nationalityId= :#{#request.getNationalityId()})" +
+            " and ( :#{#request.getCustomerId()} is null or c.customerId= :#{#request.getCustomerId()})")
+        // Parameter SPEL Expression (Spring Expression)
+    List<SearchCustomerResponse> search(SearchCustomerRequest request);
 
     boolean existsByNationalityID(int nationalityID);
 }

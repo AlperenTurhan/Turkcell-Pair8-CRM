@@ -1,5 +1,6 @@
 package com.turkcell.pair8.customerservice.services.concretes;
 
+import com.turkcell.pair8.customerservice.clients.OrderServiceClient;
 import com.turkcell.pair8.customerservice.core.exception.types.BusinessException;
 import com.turkcell.pair8.customerservice.entities.Customer;
 import com.turkcell.pair8.customerservice.repositories.CustomerRepository;
@@ -9,36 +10,46 @@ import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchC
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import com.turkcell.pair8.customerservice.services.mappers.CustomerMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
+    private final WebClient.Builder webClient;
+    private final OrderServiceClient orderServiceClient;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, WebClient.Builder webClient, OrderServiceClient orderServiceClient) {
         this.customerRepository = customerRepository;
+        this.webClient = webClient;
+        this.orderServiceClient = orderServiceClient;
     }
+
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
         // Özellikleri bireysel parametreler olarak çıkar
-        int nationalityId = request.getNationalityID();
-        String customerId = request.getCustomerID();
-        String accountNumber = request.getAccountNumber();
-        String gsmNumber = request.getGsmNumber();
-        String firstName = request.getFirstName();
-        String lastName = request.getLastName();
+//        int nationalityId = request.getNationalityID();
+//        String customerId = request.getCustomerID();
+//        String accountNumber = request.getAccountNumber();
+//        String gsmNumber = request.getGsmNumber();
+//        String firstName = request.getFirstName();
+//        String lastName = request.getLastName();
+//
+//        // Repository metodunu güncellenmiş parametrelerle çağır
+//        List<SearchCustomerResponse> searchResults = customerRepository.search(nationalityId, customerId,
+//                                                                                accountNumber, gsmNumber,
+//                                                                                firstName, lastName);
+//
+//        // Sonuçları kontrol et ve dön
+//        if (searchResults.isEmpty()) {
+//            throw new BusinessException("No customer found! Would you like to create the customer?");
+//        }
+//        return searchResults;
 
-        // Repository metodunu güncellenmiş parametrelerle çağır
-        List<SearchCustomerResponse> searchResults = customerRepository.search(nationalityId, customerId,
-                                                                                accountNumber, gsmNumber,
-                                                                                firstName, lastName);
-
-        // Sonuçları kontrol et ve dön
-        if (searchResults.isEmpty()) {
-            throw new BusinessException("No customer found! Would you like to create the customer?");
-        }
-        return searchResults;
+        int result = orderServiceClient.getCustomerIdByOrderId(request.getOrderNumber());
+        System.out.println("Order servisten gelen sonuç:"+result);
+        return customerRepository.search(request);
     }
 
     @Override
