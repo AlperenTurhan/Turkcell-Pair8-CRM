@@ -31,6 +31,6 @@ public class Contact {
     private String fax;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false, unique = true)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false, unique = true)
     private Customer customer;
 }
