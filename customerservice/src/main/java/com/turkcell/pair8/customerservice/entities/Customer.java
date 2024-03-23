@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,7 +35,7 @@ public class Customer {
     private String lastName;
 
     @Column(name = "birth_date", nullable = false)
-    private LocalDate birthDate;
+    private Date birthDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
@@ -48,7 +48,7 @@ public class Customer {
     private String motherName;
 
     @Column(name = "nationality_id", nullable = false, unique = true)
-    private String nationalityID;
+    private int nationalityID;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Address> addresses = new HashSet<>();

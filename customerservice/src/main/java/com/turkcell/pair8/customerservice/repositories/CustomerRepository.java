@@ -9,20 +9,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    @Query("SELECT new com.turkcell.pair8.customerservice.services.dtos.customer.response." +
+    @Query("Select new com.turkcell.pair8.customerservice.services.dtos.customer.response." +
             "SearchCustomerResponse(c.customerID, c.firstName, c.middleName, c.lastName, c.nationalityID)" +
-            " FROM Customer c" +
-            " WHERE (:#{#request.getNationalityID()} <= 0 OR c.nationalityID = :#{#request.getNationalityID()})" +
-            " AND (:#{#request.getCustomerID()} IS NULL OR c.customerID = :#{#request.getCustomerID()})" +
-            " AND (:#{#request.getAccountNumber()} IS NULL OR EXISTS (SELECT 1 FROM c.accounts a WHERE a.number = :#{#request.getAccountNumber()}))" +
-            " AND (:#{#request.getGsmNumber()} IS NULL OR EXISTS (SELECT 1 FROM c.contact con WHERE con.mobilePhone = :#{#request.getGsmNumber()}))" +
-            " AND (:#{#request.getFirstName()} IS NULL OR c.firstName = :#{#request.getFirstName()})" +
-            " AND (:#{#request.getLastName()} IS NULL OR c.lastName = :#{#request.getLastName()}))")
+            " from Customer c" +
+            " where ( :#{#request.getNationalityID()} <= 0 or c.nationalityID= :#{#request.getNationalityID()})" +
+            " and ( :#{#request.getCustomerID()} is null or c.customerID= :#{#request.getCustomerID()})")
     List<SearchCustomerResponse> search(@Param("request") SearchCustomerRequest request);
 
     boolean existsByNationalityID(int nationalityID);
+
+    Optional<Customer> findByNationalityID(int nationalityID);
 }

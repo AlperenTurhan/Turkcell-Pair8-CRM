@@ -16,7 +16,6 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-
     @PostMapping("search")
     public List<SearchCustomerResponse> search(@RequestBody SearchCustomerRequest request)
     {
