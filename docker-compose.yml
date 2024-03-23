@@ -8,7 +8,7 @@ services:
     ports:
       - "8083:8083"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5433/customer_service_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/customer_service_db
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8888/eureka/
     depends_on:
       - postgres
