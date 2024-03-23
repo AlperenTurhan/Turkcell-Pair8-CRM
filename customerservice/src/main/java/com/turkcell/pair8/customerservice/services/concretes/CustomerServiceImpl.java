@@ -9,22 +9,19 @@ import com.turkcell.pair8.customerservice.services.dtos.customer.request.AddCust
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import com.turkcell.pair8.customerservice.services.mappers.CustomerMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final WebClient.Builder webClient;
     private final OrderServiceClient orderServiceClient;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, WebClient.Builder webClient, OrderServiceClient orderServiceClient) {
-        this.customerRepository = customerRepository;
-        this.webClient = webClient;
-        this.orderServiceClient = orderServiceClient;
-    }
 
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
