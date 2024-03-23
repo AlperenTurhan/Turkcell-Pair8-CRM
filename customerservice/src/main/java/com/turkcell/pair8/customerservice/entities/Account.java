@@ -32,6 +32,10 @@ public class Account {
     @Column(name="type", nullable = false)
     private AccountType type;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="address_id", nullable=false)
+    private Address address;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;

@@ -6,22 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "customers")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "customers")
 public class Customer {
-    @Column(name = "id")
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "customer_id", unique = true) //TODO: Bakılacak
+    @Column(name = "customer_id", nullable = false, unique = true)
     private String customerID;
 
     @Column(name = "first_name", nullable = false)
@@ -33,38 +34,28 @@ public class Customer {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "gender")
-    private Gender gender;
+    @Column(name = "birth_date", nullable = false)
+    private LocalDate birthDate;
 
-    @Column(name = "mother_name")
-    private String motherName;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false)
+    private Gender gender;
 
     @Column(name = "father_name")
     private String fatherName;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "birth_date", nullable = false)
-    private Date birthDate;
+    @Column(name = "mother_name")
+    private String motherName;
 
     @Column(name = "nationality_id", nullable = false, unique = true)
-    private int nationalityID;
+    private String nationalityID;
 
-    //@Column(nullable = false)
-    //private String email;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Address> addresses = new HashSet<>();
 
-    @Column(name = "home_phone_number")
-    private String homePhoneNumber;
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Contact contact;
 
-    @Column(name = "gsm_number")
-    private String gsmNumber;
-
-    @Column(name = "fax_number")
-    private String faxNumber;
-
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Address> addresses;
-
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Account> accounts;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Account> accounts = new HashSet<>();
 }
