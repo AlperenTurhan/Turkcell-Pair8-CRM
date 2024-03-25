@@ -1,11 +1,13 @@
 package com.turkcell.pair8.customerservice.services.mappers;
 
 import com.turkcell.pair8.customerservice.entities.Address;
+import com.turkcell.pair8.customerservice.services.dtos.address.request.AddAddressRequest;
 import com.turkcell.pair8.customerservice.services.dtos.address.request.UpdateAddressRequest;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
-
+@Mapper
 public interface AddressMapper {
 
     AddressMapper INSTANCE = Mappers.getMapper(AddressMapper.class);
@@ -13,4 +15,6 @@ public interface AddressMapper {
     void updateAddressFromRequest(UpdateAddressRequest request, @MappingTarget Address address);
 
     Address addressFromUpdateRequest(UpdateAddressRequest request);
+
+    Address addressFromAddRequest(AddAddressRequest request);
 }
