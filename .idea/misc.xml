@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/../tcell-java1-microservices/discoveryserver/pom.xml" />
         <option value="$PROJECT_DIR$/discoveryserver/pom.xml" />
         <option value="$PROJECT_DIR$/gatewayserver/pom.xml" />
+        <option value="$PROJECT_DIR$/configserver/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
