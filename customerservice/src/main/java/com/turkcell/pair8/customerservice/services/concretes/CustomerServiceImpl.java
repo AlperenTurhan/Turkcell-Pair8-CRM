@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     public void customersWithSameNationalityIDShouldNotExist(int nationalityID) {
         if (customerRepository.existsByNationalityID(nationalityID)) {
-            throw new BusinessException("Customer with the same nationality ID already exists!");
+            throw new BusinessException(messageService.getMessage(Messages.BusinessErrors.CUSTOMERS_WITH_SAME_NATIONAL_ID_SHOULD_NOT_EXIST));
         }
     }
 

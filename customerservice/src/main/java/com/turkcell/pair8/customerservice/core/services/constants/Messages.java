@@ -8,5 +8,6 @@ public class Messages {
 
     public static class BusinessErrors {
         public static final String NOT_FOUND_ERROR = "notFoundError";
+        public static final String CUSTOMERS_WITH_SAME_NATIONAL_ID_SHOULD_NOT_EXIST = "customersWithSameNationalIDShouldNotExist";
     }
 }
