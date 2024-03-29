@@ -23,31 +23,11 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private MessageService messageService;
-    private final WebClient.Builder webClient;
     private final OrderServiceClient orderServiceClient;
-
+    private final WebClient.Builder webClient;
 
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
-        // Özellikleri bireysel parametreler olarak çıkar
-//        int nationalityId = request.getNationalityID();
-//        String customerId = request.getCustomerID();
-//        String accountNumber = request.getAccountNumber();
-//        String gsmNumber = request.getGsmNumber();
-//        String firstName = request.getFirstName();
-//        String lastName = request.getLastName();
-//
-//        // Repository metodunu güncellenmiş parametrelerle çağır
-//        List<SearchCustomerResponse> searchResults = customerRepository.search(nationalityId, customerId,
-//                                                                                accountNumber, gsmNumber,
-//                                                                                firstName, lastName);
-//
-//        // Sonuçları kontrol et ve dön
-//        if (searchResults.isEmpty()) {
-//            throw new BusinessException("No customer found! Would you like to create the customer?");
-//        }
-//        return searchResults;
-
         int result = orderServiceClient.getCustomerIdByOrderId(request.getOrderNumber());
         System.out.println("Order servisten gelen sonuç:"+result);
         return customerRepository.search(request);
@@ -72,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void update(UpdateCustomerRequest request) {
         Customer customer = customerRepository.findByNationalityID(request.getNationalityID())
                 .orElseThrow(() -> new BusinessException(messageService.getMessageWithArgs(Messages.BusinessErrors.NOT_FOUND_ERROR, request.getNationalityID())));
-        CustomerMapper.INSTANCE.updateCustomerFromRequest(request, customer); // Mapper kullanarak güncelleme yap
+        CustomerMapper.INSTANCE.updateCustomerFromRequest(request, customer);
         customerRepository.save(customer);
     }
 

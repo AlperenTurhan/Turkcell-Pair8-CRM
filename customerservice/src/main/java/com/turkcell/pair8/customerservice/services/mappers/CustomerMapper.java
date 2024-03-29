@@ -11,6 +11,6 @@ import org.mapstruct.factory.Mappers;
 public interface CustomerMapper {
     CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
     Customer customerFromAddRequest(AddCustomerRequest request);
-    @Mapping(target = "id", ignore = true) // Güncelleme sırasında id değeri değişmemeli
+    @Mapping(target = "id", ignore = true)
     void updateCustomerFromRequest(UpdateCustomerRequest request, @MappingTarget Customer customer);
 }

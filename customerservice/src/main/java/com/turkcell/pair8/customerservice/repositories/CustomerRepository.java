@@ -18,7 +18,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
             "SearchCustomerResponse(c.customerID, c.firstName, c.middleName, c.lastName, c.nationalityID)" +
             " from Customer c" +
             " where ( :#{#request.getNationalityID()} <= 0 or c.nationalityID= :#{#request.getNationalityID()})" +
-            " and ( :#{#request.getCustomerID()} is null or c.customerID= :#{#request.getCustomerID()})")
+            " or ( :#{#request.getCustomerID()} is null or c.customerID= :#{#request.getCustomerID()})" +
+            " or ( :#{#request.getFirstName()} is null or c.firstName= :#{#request.getFirstName()})" +
+            " or ( :#{#request.getLastName()} is null or c.lastName= :#{#request.getLastName()})")
     List<SearchCustomerResponse> search(@Param("request") SearchCustomerRequest request);
 
     boolean existsByNationalityID(int nationalityID);
