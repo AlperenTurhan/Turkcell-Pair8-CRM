@@ -22,7 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
-    private MessageService messageService;
+    private final MessageService messageService;
     private final OrderServiceClient orderServiceClient;
     private final WebClient.Builder webClient;
 
