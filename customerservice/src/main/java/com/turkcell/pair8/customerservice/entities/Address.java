@@ -30,10 +30,10 @@ public class Address {
     @Column(name = "address_description", nullable = false)
     private String addressDescription;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) // Address entity'si yüklendiğinde Customer entity'si yüklenmez.
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true) //Address entity'si silindiğinde Contact entity'si de silinir.
     private Account account;
 }
