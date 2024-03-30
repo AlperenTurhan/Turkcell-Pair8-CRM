@@ -1,14 +1,14 @@
 package com.turkcell.pair8.customerservice.entities;
 
+import com.turkcell.pair8.customerservice.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,12 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "customers") //Veritabanında tablo adı
-public class Customer {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Customer extends BaseEntity<Long> {
     @Column(name = "customer_id", nullable = false, unique = true)
     private String customerID;
 
@@ -35,7 +30,7 @@ public class Customer {
     private String lastName;
 
     @Column(name = "birth_date", nullable = false)
-    private Date birthDate;
+    private LocalDateTime birthDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
@@ -51,11 +46,11 @@ public class Customer {
     private int nationalityID;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Address> addresses = new HashSet<>();
+    private List<Address> addresses;
 
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true) //Customer entity'si silindiğinde Contact entity'si de silinir.
     private Contact contact;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Account> accounts = new HashSet<>();
+    private List<Account> accounts;
 }
