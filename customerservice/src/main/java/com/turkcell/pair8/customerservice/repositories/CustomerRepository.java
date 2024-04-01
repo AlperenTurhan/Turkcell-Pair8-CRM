@@ -17,13 +17,13 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("Select new com.turkcell.pair8.customerservice.services.dtos.customer.response." +
             "SearchCustomerResponse(c.customerID, c.firstName, c.middleName, c.lastName, c.nationalityID)" +
             " from Customer c" +
-            " where ( :#{#request.getNationalityID()} <= 0 or c.nationalityID= :#{#request.getNationalityID()})" +
-            " or ( :#{#request.getCustomerID()} is null or c.customerID= :#{#request.getCustomerID()})" +
-            " or ( :#{#request.getFirstName()} is null or c.firstName= :#{#request.getFirstName()})" +
-            " or ( :#{#request.getLastName()} is null or c.lastName= :#{#request.getLastName()})")
+            " where ( :#{#request.getNationalityID()} is null or c.nationalityID= :#{#request.getNationalityID()})" +
+            " and ( :#{#request.getCustomerID()} is null or c.customerID= :#{#request.getCustomerID()})" +
+            " and ( :#{#request.getFirstName()} is null or c.firstName= :#{#request.getFirstName()})" +
+            " and ( :#{#request.getLastName()} is null or c.lastName= :#{#request.getLastName()})")
     List<SearchCustomerResponse> search(@Param("request") SearchCustomerRequest request);
 
-    boolean existsByNationalityID(int nationalityID);
+    boolean existsByNationalityID(String nationalityID);
 
-    Optional<Customer> findByNationalityID(int nationalityID); //optinal kullanmamızın sebebi null dönme ihtimali olmasıdır.
+    Optional<Customer> findByNationalityID(String nationalityID); //optinal kullanmamızın sebebi null dönme ihtimali olmasıdır.
 }

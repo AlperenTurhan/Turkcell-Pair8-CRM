@@ -2,7 +2,6 @@ package com.turkcell.pair8.customerservice.services.dtos.customer.request;
 
 import com.turkcell.pair8.customerservice.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Gender;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,6 +38,5 @@ public class UpdateCustomerRequest {
     private String motherName;
 
     @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
-    @Min(0)
-    private int nationalityID;
+    private String nationalityID;
 }

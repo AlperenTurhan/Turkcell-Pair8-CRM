@@ -47,7 +47,7 @@ public class Customer extends BaseEntity<Long> {
     private String motherName;
 
     @Column(name = "nationality_id", nullable = false, unique = true)
-    private int nationalityID;
+    private String nationalityID;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses;
