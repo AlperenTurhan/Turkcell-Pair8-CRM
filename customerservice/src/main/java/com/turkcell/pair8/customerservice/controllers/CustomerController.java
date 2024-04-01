@@ -7,6 +7,7 @@ import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchC
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.UpdateCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.GetAllCustomerResponse;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class CustomerController {
 
     @PostMapping("add")
     @ResponseStatus(HttpStatus.CREATED)
-    void add(@RequestBody AddCustomerRequest request)
+    void add(@RequestBody @Valid AddCustomerRequest request)
     {
         customerService.add(request);
     }
@@ -44,7 +45,7 @@ public class CustomerController {
 
     @PutMapping("update")
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody UpdateCustomerRequest request)
+    public void update(@RequestBody @Valid UpdateCustomerRequest request)
     {
         customerService.update(request);
     }

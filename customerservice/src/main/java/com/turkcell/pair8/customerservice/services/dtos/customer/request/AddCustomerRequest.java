@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -27,7 +26,7 @@ public class AddCustomerRequest {
     private String lastName;
 
     @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    //@DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthDate;
 
     @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
