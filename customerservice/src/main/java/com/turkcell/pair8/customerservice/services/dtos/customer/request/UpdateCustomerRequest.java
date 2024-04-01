@@ -9,8 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -27,7 +28,8 @@ public class UpdateCustomerRequest {
     private String lastName;
 
     @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
-    private Date birthDate;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate birthDate;
 
     @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
     private Gender gender;

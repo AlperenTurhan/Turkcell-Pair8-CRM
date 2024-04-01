@@ -16,10 +16,23 @@ public class BaseEntity<T> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private T id;
-    @Column(name="createdDate")
+
+    @Column(name = "createdDate", updatable = false)
     private LocalDateTime createdDate;
-    @Column(name="updatedDate")
+
+    @Column(name = "updatedDate")
     private LocalDateTime updatedDate;
-    @Column(name="deletedDate")
+
+    @Column(name = "deletedDate")
     private LocalDateTime deletedDate;
+
+    @PrePersist // Before saving the entity, set the createdDate
+    protected void onCreate() {
+        createdDate = LocalDateTime.now();
+    }
+
+    @PreUpdate // Before updating the entity, set the updatedDate
+    protected void onUpdate() {
+        updatedDate = LocalDateTime.now();
+    }
 }

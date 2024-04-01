@@ -1,5 +1,6 @@
 package com.turkcell.pair8.customerservice.entities;
 
+import com.turkcell.pair8.customerservice.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,12 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "contacts")
-public class Contact {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Contact extends BaseEntity<Long> {
     @Column(name = "email", nullable = false)
     private String email;
 

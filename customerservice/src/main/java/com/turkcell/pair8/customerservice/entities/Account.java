@@ -1,5 +1,6 @@
 package com.turkcell.pair8.customerservice.entities;
 
+import com.turkcell.pair8.customerservice.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
-    @Column(name="id")
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Account extends BaseEntity<Long> {
 
     @Column(name="name", nullable = false)
     private String name;

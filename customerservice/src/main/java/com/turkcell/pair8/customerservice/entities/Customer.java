@@ -6,8 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "customers") //Veritabanında tablo adı
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "customer_type")
 public class Customer extends BaseEntity<Long> {
     @Column(name = "customer_id", nullable = false, unique = true)
     private String customerID;
@@ -30,7 +33,8 @@ public class Customer extends BaseEntity<Long> {
     private String lastName;
 
     @Column(name = "birth_date", nullable = false)
-    private LocalDateTime birthDate;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
