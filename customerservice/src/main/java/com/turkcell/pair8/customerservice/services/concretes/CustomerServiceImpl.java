@@ -14,7 +14,6 @@ import com.turkcell.pair8.customerservice.services.dtos.customer.response.Search
 import com.turkcell.pair8.customerservice.services.mappers.CustomerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,7 +24,6 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final MessageService messageService;
     private final OrderServiceClient orderServiceClient;
-    private final WebClient.Builder webClient;
 
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
