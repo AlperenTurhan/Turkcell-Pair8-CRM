@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SearchCustomerRequest
 {
-    private int nationalityID;
+    private String nationalityID;
     private String customerID;
     private String accountNumber;
     private String gsmNumber;

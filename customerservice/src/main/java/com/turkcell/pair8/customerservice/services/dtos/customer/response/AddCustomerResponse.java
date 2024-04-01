@@ -20,5 +20,5 @@ public class AddCustomerResponse {
     private Gender gender;
     private String fatherName;
     private String motherName;
-    private int nationalityID;
+    private String nationalityID;
 }
