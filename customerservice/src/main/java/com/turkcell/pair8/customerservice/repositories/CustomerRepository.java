@@ -25,5 +25,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     boolean existsByNationalityID(String nationalityID);
 
+
     Optional<Customer> findByNationalityID(String nationalityID); //optinal kullanmamızın sebebi null dönme ihtimali olmasıdır.
 }
