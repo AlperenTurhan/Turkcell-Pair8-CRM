@@ -5,6 +5,7 @@ import com.turkcell.pair8.customerservice.services.abstracts.CustomerService;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.AddCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.UpdateCustomerRequest;
+import com.turkcell.pair8.customerservice.services.dtos.customer.response.AddCustomerResponse;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.GetAllCustomerResponse;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import jakarta.validation.Valid;
@@ -30,9 +31,9 @@ public class CustomerController {
 
     @PostMapping("add")
     @ResponseStatus(HttpStatus.CREATED)
-    void add(@RequestBody @Valid AddCustomerRequest request)
+    public AddCustomerResponse add(@RequestBody @Valid AddCustomerRequest request)
     {
-        customerService.add(request);
+        return customerService.add(request);
     }
 
     @GetMapping("getAll")

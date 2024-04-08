@@ -10,9 +10,11 @@ import com.turkcell.pair8.customerservice.services.abstracts.CustomerService;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.AddCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.UpdateCustomerRequest;
+import com.turkcell.pair8.customerservice.services.dtos.customer.response.AddCustomerResponse;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.GetAllCustomerResponse;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import com.turkcell.pair8.customerservice.services.mappers.CustomerMapper;
+import com.turkcell.pair8.customerservice.services.rules.CustomerBusinessRules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final MessageService messageService;
+    private final CustomerBusinessRules customerBusinessRules;
 
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
@@ -40,11 +43,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void add(AddCustomerRequest request) {
-        customersWithSameNationalityIDShouldNotExist(request.getNationalityID());
+    public AddCustomerResponse add(AddCustomerRequest request) {
+        customerBusinessRules.customerWithSameNationalityIDCanNotExist(request.getNationalityID());
+
         Customer customer = CustomerMapper.INSTANCE.customerFromAddRequest(request);
         customer.setCustomerID(UUID.randomUUID().toString());
         customerRepository.save(customer);
+
+        return CustomerMapper.INSTANCE.responseFromAddRequest(customer);
     }
 
     @Override
@@ -62,12 +68,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         CustomerMapper.INSTANCE.updateCustomerFromRequest(request, customer);
         customerRepository.save(customer);
-    }
-
-    public void customersWithSameNationalityIDShouldNotExist(String nationalityID) {
-        if (customerRepository.existsByNationalityID(nationalityID)) {
-            throw new BusinessException(messageService.getMessage(Messages.BusinessErrors.CUSTOMERS_WITH_SAME_NATIONAL_ID_SHOULD_NOT_EXIST));
-        }
     }
 
     public boolean isIdExist(int id) {
