@@ -36,4 +36,6 @@ public class Account extends BaseEntity<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;
+
+    //TODO: Product listesi eklenecek
 }
