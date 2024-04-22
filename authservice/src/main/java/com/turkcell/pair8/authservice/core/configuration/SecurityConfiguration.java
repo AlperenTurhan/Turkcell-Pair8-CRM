@@ -5,6 +5,7 @@ import com.turkcell.pair8.authservice.services.abstracts.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -21,13 +22,24 @@ public class SecurityConfiguration {
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
     private final JwtAuthFilter jwtAuthFilter;
+
+    private final String[] WHITE_LIST_URLS = {
+            "/swagger-ui/**",
+            "/v2/api-docs",
+            "/v3/api-docs/**",
+            "/api/v1/auth/**",
+
+    };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("api/v1/test/**").authenticated()
-                        .anyRequest().permitAll())
+                        .requestMatchers(WHITE_LIST_URLS).permitAll()
+                        // özel configler
+                        .requestMatchers("api/v1/test/**").hasAnyAuthority("ADMIN")
+                        .anyRequest().authenticated()
+                )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
