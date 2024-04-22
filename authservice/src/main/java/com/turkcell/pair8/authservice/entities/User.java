@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Table(name = "users")
 @Entity
@@ -33,10 +34,13 @@ public class User implements UserDetails {
     @Column(name = "lastName")
     private String lastName;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
+    @ManyToMany(fetch = FetchType.EAGER) // user'ı getirirken rollerini de getir
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> authorities;
 
     @Override
     public String getPassword() {
