@@ -30,7 +30,7 @@ public class CustomerBusinessRules
 
     public void accountWithSameNameCanNotExist(String name)
     {
-        Optional<Account> account = accountRepository.findByName();
+        Optional<Account> account = accountRepository.findByName(name);
 
         if(account.isPresent())
             throw new BusinessException(messageService.getMessage(Messages.BusinessErrors.ACCOUNTS_WITH_SAME_NAME_SHOULD_NOT_EXIST));

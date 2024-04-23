@@ -22,8 +22,6 @@ public class AuthServiceImpl implements AuthService {
     private final UserService userService;
     @Override
     public void register(RegisterRequest request) {
-        // 9:15
-        // TODO: Mapstruct
         userService.add(request);
     }
 

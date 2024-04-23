@@ -4,6 +4,8 @@ public class Messages {
     public static class ValidationErrors {
         public static final String VALIDATION_NOT_BLANK = "validation.notBlank";
         public static final String VALIDATION_LENGTH = "validation.length";
+        public static final String VALIDATION_NOT_NULL = "validation.notNull";
+        public static final String VALIDATION_PAST = "validation.past";
     }
 
     public static class BusinessErrors {

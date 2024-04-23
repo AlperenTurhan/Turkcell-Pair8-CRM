@@ -35,11 +35,11 @@ public class GlobalExceptionHandler {
         problemDetails.setErrors(errors.toArray(new String[0]));
         return problemDetails;
     }
-
-    @ExceptionHandler({Exception.class})
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ProblemDetails handleOtherExceptions()
-    {
-        return new ProblemDetails("Internal Server Error", "An unexpected error occurred", "https://turkcell.com/exceptions/internal-server-error");
-    }
+//
+//    @ExceptionHandler({Exception.class})
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    public ProblemDetails handleOtherExceptions()
+//    {
+//        return new ProblemDetails("Internal Server Error", "An unexpected error occurred", "https://turkcell.com/exceptions/internal-server-error");
+//    }
 }
