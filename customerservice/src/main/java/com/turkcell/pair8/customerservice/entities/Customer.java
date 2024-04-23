@@ -19,7 +19,7 @@ import java.util.List;
 @Table(name = "customers") //Veritabanında tablo adı
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "customer_type")
-public class Customer extends BaseEntity<Long> {
+public class Customer extends BaseEntity {
     @Column(name = "customer_id", nullable = false, unique = true)
     private String customerID;
 

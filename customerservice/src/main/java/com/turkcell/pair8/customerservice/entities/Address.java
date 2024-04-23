@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "addresses")
-public class Address extends BaseEntity<Long> {
+public class Address extends BaseEntity {
     @Column(name = "city", nullable = false)
     private String city;
 

@@ -20,6 +20,6 @@ public class AddContactRequest {
     private String mobilePhone;
 
     private String fax;
-    private int customerId;
+    private Long customerId;
 
 }
