@@ -3,6 +3,8 @@ package com.turkcell.pair8.customerservice.services.dtos.customer.request;
 import com.turkcell.pair8.customerservice.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Gender;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,11 +27,11 @@ public class AddCustomerRequest {
     @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
     private String lastName;
 
-    @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
-    //@DateTimeFormat(pattern = "dd-MM-yyyy")
+    @NotNull(message = Messages.ValidationErrors.VALIDATION_NOT_NULL)
+    @Past(message = Messages.ValidationErrors.VALIDATION_PAST)
     private LocalDate birthDate;
 
-    @NotBlank(message = Messages.ValidationErrors.VALIDATION_NOT_BLANK)
+    @NotNull(message = Messages.ValidationErrors.VALIDATION_NOT_NULL)
     private Gender gender;
 
     private String fatherName;

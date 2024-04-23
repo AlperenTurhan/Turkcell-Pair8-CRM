@@ -33,7 +33,6 @@ public class Customer extends BaseEntity<Long> {
     private String lastName;
 
     @Column(name = "birth_date", nullable = false)
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)

@@ -1,6 +1,6 @@
 package com.turkcell.pair8.authservice.services.concretes;
 
-import com.turkcell.pair8.authservice.core.jwt.JwtService;
+import com.pair4.jwt.JwtService;
 import com.turkcell.pair8.authservice.services.abstracts.AuthService;
 import com.turkcell.pair8.authservice.services.abstracts.UserService;
 import com.turkcell.pair8.authservice.services.dtos.requests.LoginRequest;
@@ -22,8 +22,6 @@ public class AuthServiceImpl implements AuthService {
     private final UserService userService;
     @Override
     public void register(RegisterRequest request) {
-        // 9:15
-        // TODO: Mapstruct
         userService.add(request);
     }
 

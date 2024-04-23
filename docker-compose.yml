@@ -10,8 +10,8 @@ services:
     ports:
       - "8001:8001"
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8888/eureka/
-      - EUREKA_URL=http://discovery-server:8888
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - CONFIGURL=http://config-server:8079
     depends_on:
       - discovery-server
     networks:
