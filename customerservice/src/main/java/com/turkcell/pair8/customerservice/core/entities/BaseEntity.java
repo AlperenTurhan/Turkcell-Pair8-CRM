@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @MappedSuperclass
-public class BaseEntity<T> {
+public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private T id;
+    private Long id;
 
     @Column(name = "createdDate", updatable = false)
     private LocalDateTime createdDate;
