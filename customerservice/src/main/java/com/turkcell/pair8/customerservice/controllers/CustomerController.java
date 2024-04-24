@@ -50,4 +50,11 @@ public class CustomerController {
     {
         customerService.update(request);
     }
+
+    @DeleteMapping("delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@RequestParam int id)
+    {
+        customerService.delete(id);
+    }
 }
