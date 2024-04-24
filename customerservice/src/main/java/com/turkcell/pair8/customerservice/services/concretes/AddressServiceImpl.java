@@ -6,23 +6,25 @@ import com.turkcell.pair8.customerservice.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Address;
 import com.turkcell.pair8.customerservice.repositories.AddressRepository;
 import com.turkcell.pair8.customerservice.services.abstracts.AddressService;
+import com.turkcell.pair8.customerservice.services.dtos.Contact.request.AddContactRequest;
 import com.turkcell.pair8.customerservice.services.dtos.address.request.AddAddressRequest;
 import com.turkcell.pair8.customerservice.services.dtos.address.request.UpdateAddressRequest;
 import com.turkcell.pair8.customerservice.services.mappers.AddressMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
-    private AddressRepository  addressRepository;
-    private MessageService messageService;
+    private final AddressRepository  addressRepository;
+    private final MessageService messageService;
     @Override
-    public void add(AddAddressRequest request) {
+    public AddAddressRequest add(AddAddressRequest request) {
         Address address = AddressMapper.INSTANCE.addressFromAddRequest(request);
         addressRepository.save(address);
+        return request;
     }
 
     @Override

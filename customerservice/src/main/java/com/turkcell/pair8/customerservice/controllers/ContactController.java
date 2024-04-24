@@ -18,6 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ContactController {
     private final ContactService contactService;
+
     @GetMapping("getContact")
     @ResponseStatus(HttpStatus.OK)
     Optional<Contact> getContact(int customerId){

@@ -13,5 +13,5 @@ import lombok.Setter;
 public class AddAccountRequest {
     private String name;
     private String description;
-    private Address address;
+    private Long addressId;
 }
