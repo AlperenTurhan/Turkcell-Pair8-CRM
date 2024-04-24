@@ -14,5 +14,6 @@ public interface ContactMapper {
     @Mapping(target = "id", ignore = true)
     void updateContactFromRequest(UpdateContactRequest request, @MappingTarget Contact contact);
 
+    @Mapping(source="customerId", target="customer.id")
     Contact addContactFromRequest(AddContactRequest request);
 }
