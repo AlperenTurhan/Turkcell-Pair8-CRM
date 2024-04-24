@@ -27,7 +27,7 @@ public class Address extends BaseEntity {
     private String addressDescription;
 
     @ManyToOne(fetch = FetchType.LAZY) // Address entity'si yüklendiğinde Customer entity'si yüklenmez.
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     private Customer customer;
 
     @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true) //Address entity'si silindiğinde Contact entity'si de silinir.
