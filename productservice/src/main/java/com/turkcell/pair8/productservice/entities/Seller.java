@@ -1,5 +1,6 @@
 package com.turkcell.pair8.productservice.entities;
 
+import com.turkcell.pair8.productservice.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "sellers")
-public class Seller extends BaseEntity{
+public class Seller extends BaseEntity {
     @Column(name = "seller_id", nullable = false, unique = true)
     private String sellerID;
 

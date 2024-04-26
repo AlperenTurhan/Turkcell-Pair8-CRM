@@ -1,5 +1,6 @@
 package com.turkcell.pair8.productservice.entities;
 
+import com.turkcell.pair8.productservice.core.entities.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "products")
-public class Product extends BaseEntity{
+public class Product extends BaseEntity {
     @Column(name = "product_id", nullable = false, unique = true)
     private String productID;
 

@@ -1,4 +1,4 @@
-package com.turkcell.pair8.productservice.entities;
+package com.turkcell.pair8.productservice.core.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
