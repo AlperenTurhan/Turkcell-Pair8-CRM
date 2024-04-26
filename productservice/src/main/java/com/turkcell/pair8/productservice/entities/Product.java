@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "customers")
+@Table(name = "products")
 public class Product extends BaseEntity{
     @Column(name = "product_id", nullable = false, unique = true)
     private String productID;

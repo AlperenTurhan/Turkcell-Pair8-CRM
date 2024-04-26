@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "customers")
+@Table(name = "sellers")
 public class Seller extends BaseEntity{
     @Column(name = "seller_id", nullable = false, unique = true)
     private String sellerID;
