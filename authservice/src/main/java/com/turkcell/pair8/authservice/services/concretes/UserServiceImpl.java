@@ -1,8 +1,8 @@
 package com.turkcell.pair8.authservice.services.concretes;
 
-import com.turkcell.pair8.authservice.entities.User;
-import com.turkcell.pair8.authservice.repositories.UserRepository;
-import com.turkcell.pair8.authservice.services.abstracts.UserService;
+import com.pair4.entities.User;
+import com.pair4.repositories.UserRepository;
+import com.pair4.services.abstracts.UserService;
 import com.turkcell.pair8.authservice.services.dtos.requests.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(username).orElseThrow(() -> new AccessDeniedException("Giriş başarısız."));
     }
 
-    @Override
     public void add(RegisterRequest request) {
         User user = new User();
         user.setEmail(request.getEmail());
