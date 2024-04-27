@@ -1,5 +1,6 @@
 package com.turkcell.pair8.productservice.entities;
 
+import com.turkcell.pair8.customerservice.entities.Customer;
 import com.turkcell.pair8.productservice.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,8 @@ import java.util.Set;
 @Table(name = "carts")
 public class Cart extends BaseEntity {
 
+    // TODO: feignclient ile customerservice import etmeden customera ulaşma
     // TODO: list yerine set kullan
-    // TODO: customer entitysi ile buraya bağlantı
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false, unique = true)
     private Customer customer;
