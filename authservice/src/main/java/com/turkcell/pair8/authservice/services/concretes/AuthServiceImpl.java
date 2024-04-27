@@ -12,9 +12,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.GrantedAuthority;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -27,11 +28,15 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String login(LoginRequest request) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+
         if(!authentication.isAuthenticated())
-            throw new RuntimeException("Username or password is incorrect.");
+            throw new RuntimeException("E-posta veya şifre hatalı.");
 
         UserDetails user = userService.loadUserByUsername(request.getEmail());
-        return jwtService.generateToken(user.getUsername());
+
+        return jwtService.generateToken(user.getUsername(),
+            user.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList());
     }
 }
