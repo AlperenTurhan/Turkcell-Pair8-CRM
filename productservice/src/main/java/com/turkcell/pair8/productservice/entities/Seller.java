@@ -19,8 +19,17 @@ public class Seller extends BaseEntity {
     @Column(name = "seller_id", nullable = false, unique = true)
     private String sellerID;
 
-    @Column(name = "seller_name", nullable = false)
-    private String sellerName;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "tax_number", nullable = false, unique = true)
+    private String taxNumber;
+
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
