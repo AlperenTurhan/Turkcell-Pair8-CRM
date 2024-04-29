@@ -1,5 +1,6 @@
 package com.turkcell.pair8.invoiceservice;
 
+import com.turkcell.pair8.events.OrderCreatedEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,7 +13,7 @@ public class InvoiceserviceApplication {
 	}
 
 	@KafkaListener(topics = "orderTopic", groupId = "invoiceGroup")
-	public void handleEvent(String message){
-		System.out.println("Kafka message received: "+ message);
+	public void handleEvent(OrderCreatedEvent event){
+		System.out.println("Kafka message received: ");
 	}
 }
