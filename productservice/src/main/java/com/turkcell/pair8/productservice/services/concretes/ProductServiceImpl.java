@@ -7,6 +7,7 @@ import com.turkcell.pair8.productservice.services.dtos.cart.requests.AddCartRequ
 import com.turkcell.pair8.productservice.services.dtos.cart.requests.UpdateCartRequest;
 import com.turkcell.pair8.productservice.services.dtos.product.requests.AddProductRequest;
 import com.turkcell.pair8.productservice.services.dtos.product.requests.UpdateProductRequest;
+import com.turkcell.pair8.productservice.services.dtos.product.responses.AddProductResponse;
 import com.turkcell.pair8.productservice.services.mappers.CartMapper;
 import com.turkcell.pair8.productservice.services.mappers.ProductMapper;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class ProductServiceImpl {
         //TODO: MESSAGES
 
     }
-    public AddProductRequest add(AddProductRequest request){
+    public AddProductResponse add(AddProductRequest request){
         Product product = ProductMapper.INSTANCE.addProductRequest(request);
         productRepository.save(product);
         return request;
