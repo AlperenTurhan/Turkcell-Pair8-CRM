@@ -1,15 +1,18 @@
 package com.turkcell.pair8.invoiceservice.entities;
 
 import com.turkcell.pair8.invoiceservice.core.entities.BaseEntity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "accounts")
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Account extends BaseEntity {
     @Column(name = "id")
     @Id

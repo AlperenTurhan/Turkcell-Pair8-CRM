@@ -1,6 +1,7 @@
 package com.turkcell.pair8.invoiceservice.core.service.concretes;
 
-import com.turkcell.pair8.customerservice.core.service.abstracts.ValidationHelperService;
+
+import com.turkcell.pair8.invoiceservice.core.service.abstracts.ValidationHelperService;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.FieldError;
 

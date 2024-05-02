@@ -1,9 +1,9 @@
 package com.turkcell.pair8.invoiceservice.core.exception.handlers;
 
-import com.turkcell.pair8.customerservice.core.exception.details.BusinessProblemDetails;
-import com.turkcell.pair8.customerservice.core.exception.details.ValidationProblemDetails;
-import com.turkcell.pair8.customerservice.core.exception.types.BusinessException;
-import com.turkcell.pair8.customerservice.core.service.abstracts.ValidationHelperService;
+import com.turkcell.pair8.core.exception.details.BusinessProblemDetails;
+import com.turkcell.pair8.core.exception.details.ValidationProblemDetails;
+import com.turkcell.pair8.core.exception.types.BusinessException;
+import com.turkcell.pair8.invoiceservice.core.service.abstracts.ValidationHelperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

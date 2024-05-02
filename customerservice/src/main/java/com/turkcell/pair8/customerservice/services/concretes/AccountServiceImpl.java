@@ -1,7 +1,7 @@
 package com.turkcell.pair8.customerservice.services.concretes;
 
+import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.customerservice.core.exception.types.BusinessException;
-import com.turkcell.pair8.customerservice.core.paging.PageInfo;
 import com.turkcell.pair8.customerservice.core.services.abstracts.MessageService;
 import com.turkcell.pair8.customerservice.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Account;
@@ -14,10 +14,7 @@ import com.turkcell.pair8.customerservice.services.dtos.account.request.UpdateAc
 import com.turkcell.pair8.customerservice.services.dtos.account.response.AddAccountResponse;
 import com.turkcell.pair8.customerservice.services.dtos.account.response.GetAllAccountResponse;
 import com.turkcell.pair8.customerservice.services.mappers.AccountMapper;
-import com.turkcell.pair8.customerservice.services.mappers.CustomerMapper;
 import com.turkcell.pair8.customerservice.services.rules.CustomerBusinessRules;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
