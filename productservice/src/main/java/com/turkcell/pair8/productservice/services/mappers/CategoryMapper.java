@@ -11,5 +11,5 @@ public interface CategoryMapper {
     Category addCategoryRequest(AddCategoryRequest request);
     Category updateCategoryFromRequest(UpdateCategoryRequest request);
     AddCategoryResponse responseFromAddRequest(Category category);
-    
+    AddCategoryResponse addCategoryResponse(Category category);
 }

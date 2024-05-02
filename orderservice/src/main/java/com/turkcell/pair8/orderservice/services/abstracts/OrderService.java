@@ -1,6 +1,6 @@
 package com.turkcell.pair8.orderservice.services.abstracts;
 
-import com.turkcell.pair8.orderservice.core.Paging.PageInfo;
+import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.orderservice.services.dtos.request.AddOrderRequest;
 import com.turkcell.pair8.orderservice.services.dtos.response.AddOrderResponse;
 import com.turkcell.pair8.orderservice.services.dtos.response.GetAllOrderResponse;

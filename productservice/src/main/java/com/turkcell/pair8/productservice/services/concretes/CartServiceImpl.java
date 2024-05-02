@@ -1,14 +1,5 @@
 package com.turkcell.pair8.productservice.services.concretes;
 
-import com.turkcell.pair8.customerservice.core.exception.types.BusinessException;
-import com.turkcell.pair8.customerservice.core.services.constants.Messages;
-import com.turkcell.pair8.customerservice.entities.Address;
-import com.turkcell.pair8.customerservice.entities.Contact;
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.AddContactRequest;
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.UpdateContactRequest;
-import com.turkcell.pair8.customerservice.services.dtos.address.request.UpdateAddressRequest;
-import com.turkcell.pair8.customerservice.services.mappers.AddressMapper;
-import com.turkcell.pair8.customerservice.services.mappers.ContactMapper;
 import com.turkcell.pair8.productservice.entities.Cart;
 import com.turkcell.pair8.productservice.repositories.CartRepository;
 import com.turkcell.pair8.productservice.services.dtos.cart.requests.AddCartRequest;
@@ -35,8 +26,6 @@ public class CartServiceImpl {
     public void update(UpdateCartRequest request) {
         Cart cart = CartMapper.INSTANCE.updateCartRequest(request);
         cartRepository.save(cart);
-    //TODO: MESSAGES
-
     }
     public AddCartRequest add(AddCartRequest request){
         Cart cart = CartMapper.INSTANCE.addCartRequest(request);
@@ -44,4 +33,3 @@ public class CartServiceImpl {
         return request;
     }
 }
-

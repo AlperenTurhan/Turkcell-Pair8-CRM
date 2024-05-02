@@ -1,6 +1,6 @@
 package com.turkcell.pair8.orderservice.services.conscretes;
 
-import com.turkcell.pair8.orderservice.core.Paging.PageInfo;
+import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.orderservice.entities.Order;
 import com.turkcell.pair8.orderservice.repositories.OrderRepository;
 import com.turkcell.pair8.orderservice.services.abstracts.OrderService;
@@ -13,13 +13,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
+
     @Override
     public List<GetAllOrderResponse> getAll(PageInfo pageInfo) {
         PageRequest pageRequest = PageRequest.of(pageInfo.getPage(), pageInfo.getSize());
@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     public AddOrderResponse add(AddOrderRequest request) {
         Order order = OrderMapper.INSTANCE.addOrderFromRequest(request);
         orderRepository.save(order);
-        return request;
+        return OrderMapper.INSTANCE.dtoFromAddRequest(order);
     }
 
     @Override

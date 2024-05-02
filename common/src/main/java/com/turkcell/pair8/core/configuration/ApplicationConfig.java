@@ -1,4 +1,4 @@
-package com.turkcell.pair8.customerservice.core.configuration;
+package com.turkcell.pair8.core.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
