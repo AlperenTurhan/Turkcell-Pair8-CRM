@@ -36,6 +36,6 @@ public class ProductServiceImpl {
     public AddProductResponse add(AddProductRequest request){
         Product product = ProductMapper.INSTANCE.addProductRequest(request);
         productRepository.save(product);
-        return request;
+        return ProductMapper.INSTANCE.responseFromAddProduct(product);
     }
 }

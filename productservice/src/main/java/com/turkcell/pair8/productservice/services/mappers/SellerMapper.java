@@ -16,4 +16,8 @@ public interface SellerMapper {
     Seller addSellerRequest(AddSellerRequest request);
     void updateSellerFromRequest(UpdateSellerRequest request, @MappingTarget Seller seller);
     AddSellerResponse responseFromAddSeller(Seller seller);
+
+    Seller updateProductFromRequest(UpdateSellerRequest request);
+
+    Seller addProductRequest(AddSellerRequest request);
 }
