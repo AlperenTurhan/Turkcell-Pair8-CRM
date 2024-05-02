@@ -1,6 +1,6 @@
 package com.turkcell.pair8.customerservice.controllers;
 
-import com.turkcell.pair8.customerservice.core.paging.PageInfo;
+import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.customerservice.services.abstracts.CustomerService;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.AddCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchCustomerRequest;
@@ -40,7 +40,7 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.OK)
     public List<GetAllCustomerResponse> getAll(@RequestParam int page, @RequestParam int size)
     {
-        PageInfo pageInfo = new PageInfo(page,size);
+        PageInfo pageInfo = new PageInfo(page, size);
         return customerService.getAll(pageInfo);
     }
 
