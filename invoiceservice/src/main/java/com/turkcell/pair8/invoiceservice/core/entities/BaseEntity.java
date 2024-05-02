@@ -1,6 +1,6 @@
 package com.turkcell.pair8.invoiceservice.core.entities;
 
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

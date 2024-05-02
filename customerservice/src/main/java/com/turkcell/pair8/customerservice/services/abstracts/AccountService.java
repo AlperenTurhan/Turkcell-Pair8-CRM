@@ -1,6 +1,6 @@
 package com.turkcell.pair8.customerservice.services.abstracts;
 
-import com.turkcell.pair8.customerservice.core.paging.PageInfo;
+import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.customerservice.services.dtos.account.request.AddAccountRequest;
 import com.turkcell.pair8.customerservice.services.dtos.account.request.UpdateAccountRequest;
 import com.turkcell.pair8.customerservice.services.dtos.account.response.AddAccountResponse;

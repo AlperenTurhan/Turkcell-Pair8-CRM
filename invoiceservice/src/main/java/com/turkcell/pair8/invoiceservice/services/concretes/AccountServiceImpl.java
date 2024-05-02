@@ -12,7 +12,7 @@ import com.turkcell.pair8.invoiceservice.services.dtos.requests.UpdateAddressReq
 import com.turkcell.pair8.invoiceservice.services.dtos.responses.AccountResponse;
 import com.turkcell.pair8.invoiceservice.services.mappers.AccountMapper;
 import com.turkcell.pair8.invoiceservice.services.mappers.AddressMapper;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
     private final CustomerServiceClient customerServiceClient;
