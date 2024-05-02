@@ -18,11 +18,8 @@ import java.util.Set;
 @Table(name = "carts")
 public class Cart extends BaseEntity {
 
-    // TODO: feignclient ile customerservice import etmeden customera ulaşma
-    // TODO: list yerine set kullan
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false, unique = true)
-    private Customer customer;
+    @Column(name = "customer_id")
+    private Long customerId;
 
     @Column(name = "total_amount")
     private float totalAmount;
