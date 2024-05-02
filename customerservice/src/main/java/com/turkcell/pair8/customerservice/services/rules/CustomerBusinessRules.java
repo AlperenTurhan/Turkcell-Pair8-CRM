@@ -1,8 +1,9 @@
 package com.turkcell.pair8.customerservice.services.rules;
 
-import com.turkcell.pair8.customerservice.core.exception.types.BusinessException;
-import com.turkcell.pair8.customerservice.core.services.abstracts.MessageService;
-import com.turkcell.pair8.customerservice.core.services.constants.Messages;
+
+import com.turkcell.pair8.core.exception.types.BusinessException;
+import com.turkcell.pair8.core.services.abstracts.MessageService;
+import com.turkcell.pair8.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Account;
 import com.turkcell.pair8.customerservice.entities.Customer;
 import com.turkcell.pair8.customerservice.repositories.AccountRepository;
@@ -25,7 +26,7 @@ public class CustomerBusinessRules
         Optional<Customer> customer = customerRepository.findByNationalityID(nationalityID);
 
         if(customer.isPresent())
-            throw new  BusinessException(messageService.getMessage(Messages.BusinessErrors.CUSTOMERS_WITH_SAME_NATIONAL_ID_SHOULD_NOT_EXIST));
+            throw new BusinessException(messageService.getMessage(Messages.BusinessErrors.CUSTOMERS_WITH_SAME_NATIONAL_ID_SHOULD_NOT_EXIST));
     }
 
     public void accountWithSameNameCanNotExist(String name)

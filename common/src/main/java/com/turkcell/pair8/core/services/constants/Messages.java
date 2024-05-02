@@ -1,4 +1,4 @@
-package com.turkcell.pair8.customerservice.core.services.constants;
+package com.turkcell.pair8.core.services.constants;
 
 public class Messages {
     public static class ValidationErrors {

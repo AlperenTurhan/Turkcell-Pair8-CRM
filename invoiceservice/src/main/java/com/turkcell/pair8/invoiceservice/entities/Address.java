@@ -1,6 +1,6 @@
 package com.turkcell.pair8.invoiceservice.entities;
 
-import com.turkcell.pair8.invoiceservice.core.entities.BaseEntity;
+import com.turkcell.pair8.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

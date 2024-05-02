@@ -1,6 +1,6 @@
-package com.turkcell.pair8.customerservice.core.services.concretes;
+package com.turkcell.pair8.core.services.concretes;
 
-import com.turkcell.pair8.customerservice.core.services.abstracts.MessageService;
+import com.turkcell.pair8.core.services.abstracts.MessageService;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
