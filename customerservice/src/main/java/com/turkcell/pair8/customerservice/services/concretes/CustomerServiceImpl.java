@@ -1,7 +1,7 @@
 package com.turkcell.pair8.customerservice.services.concretes;
 
+import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.customerservice.core.exception.types.BusinessException;
-import com.turkcell.pair8.customerservice.core.paging.PageInfo;
 import com.turkcell.pair8.customerservice.core.services.abstracts.MessageService;
 import com.turkcell.pair8.customerservice.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Customer;
