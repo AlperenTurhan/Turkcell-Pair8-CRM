@@ -1,8 +1,8 @@
 package com.turkcell.pair8.customerservice.services.concretes;
 
-import com.turkcell.pair8.customerservice.core.exception.types.BusinessException;
-import com.turkcell.pair8.customerservice.core.services.abstracts.MessageService;
-import com.turkcell.pair8.customerservice.core.services.constants.Messages;
+import com.turkcell.pair8.core.exception.types.BusinessException;
+import com.turkcell.pair8.core.services.abstracts.MessageService;
+import com.turkcell.pair8.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Address;
 import com.turkcell.pair8.customerservice.repositories.AddressRepository;
 import com.turkcell.pair8.customerservice.services.abstracts.AddressService;

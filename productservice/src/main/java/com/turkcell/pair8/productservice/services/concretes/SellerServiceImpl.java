@@ -8,6 +8,7 @@ import com.turkcell.pair8.productservice.services.dtos.product.requests.UpdatePr
 import com.turkcell.pair8.productservice.services.dtos.seller.requests.AddSellerRequest;
 import com.turkcell.pair8.productservice.services.dtos.seller.requests.UpdateSellerRequest;
 import com.turkcell.pair8.productservice.services.mappers.ProductMapper;
+import com.turkcell.pair8.productservice.services.mappers.SellerMapper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
