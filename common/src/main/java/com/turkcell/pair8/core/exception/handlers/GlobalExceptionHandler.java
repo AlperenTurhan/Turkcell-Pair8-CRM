@@ -1,6 +1,7 @@
 package com.turkcell.pair8.core.exception.handlers;
 
 import com.turkcell.pair8.core.exception.details.BusinessProblemDetails;
+import com.turkcell.pair8.core.exception.details.ProblemDetails;
 import com.turkcell.pair8.core.exception.details.ValidationProblemDetails;
 import com.turkcell.pair8.core.exception.types.BusinessException;
 import org.springframework.http.HttpStatus;
@@ -33,11 +34,11 @@ public class GlobalExceptionHandler {
         problemDetails.setErrors(errors.toArray(new String[0]));
         return problemDetails;
     }
-//
-//    @ExceptionHandler({Exception.class})
-//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-//    public ProblemDetails handleOtherExceptions()
-//    {
-//        return new ProblemDetails("Internal Server Error", "An unexpected error occurred", "https://turkcell.com/exceptions/internal-server-error");
-//    }
+
+    @ExceptionHandler({Exception.class})
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ProblemDetails handleOtherExceptions()
+    {
+        return new ProblemDetails("Internal Server Error", "An unexpected error occurred", "https://turkcell.com/exceptions/internal-server-error");
+    }
 }

@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@RequiredArgsConstructor
 @Component
+@RequiredArgsConstructor
 public class CustomerBusinessRules
 {
     private final CustomerRepository customerRepository;

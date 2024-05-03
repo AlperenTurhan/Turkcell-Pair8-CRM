@@ -1,6 +1,6 @@
 package com.turkcell.pair8.customerservice.services.dtos.customer.request;
 
-import com.turkcell.pair8.customerservice.core.services.constants.Messages;
+import com.turkcell.pair8.core.services.constants.Messages;
 import com.turkcell.pair8.customerservice.entities.Gender;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

@@ -1,12 +1,11 @@
 package com.turkcell.pair8.customerservice.entities;
 
-import com.turkcell.pair8.customerservice.core.entities.BaseEntity;
+import com.turkcell.pair8.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -48,7 +47,7 @@ public class Customer extends BaseEntity {
     @Column(name = "nationality_id", nullable = false, unique = true)
     private String nationalityID;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) // fetch = FetchType.LAZY: İlişkili tablodan veri çekilirken ilişkili tablonun verileri çekilmez.
     private List<Address> addresses;
 
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true) //Customer entity'si silindiğinde Contact entity'si de silinir.
