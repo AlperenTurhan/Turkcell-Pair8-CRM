@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface CustomerMapper {
     CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
+
     Customer customerFromAddRequest(AddCustomerRequest request);
 
     GetAllCustomerResponse dtoFromGetAllRequest(Customer customer);

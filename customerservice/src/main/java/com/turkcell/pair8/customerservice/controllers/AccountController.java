@@ -1,13 +1,11 @@
 package com.turkcell.pair8.customerservice.controllers;
 
-import com.turkcell.pair8.customerservice.core.paging.PageInfo;
+import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.customerservice.services.abstracts.AccountService;
 import com.turkcell.pair8.customerservice.services.dtos.account.request.AddAccountRequest;
 import com.turkcell.pair8.customerservice.services.dtos.account.request.UpdateAccountRequest;
 import com.turkcell.pair8.customerservice.services.dtos.account.response.AddAccountResponse;
 import com.turkcell.pair8.customerservice.services.dtos.account.response.GetAllAccountResponse;
-import com.turkcell.pair8.customerservice.services.dtos.customer.request.AddCustomerRequest;
-import com.turkcell.pair8.customerservice.services.dtos.customer.response.AddCustomerResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
