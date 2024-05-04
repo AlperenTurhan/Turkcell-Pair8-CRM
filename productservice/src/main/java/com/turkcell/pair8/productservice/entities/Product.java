@@ -35,7 +35,12 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "seller_id", referencedColumnName = "id", nullable = false)
     private Seller seller;
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "products_categories",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     private Set<Category> categories;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)

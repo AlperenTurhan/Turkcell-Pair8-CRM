@@ -74,14 +74,6 @@
 		</dependency>
 	</dependencies>
 
-	<repositories>
-		<repository>
-			<id>github</id>
-			<name>Github Packages</name>
-			<url>https://maven.pkg.github.com/ersinelmas/core/</url>
-		</repository>
-	</repositories>
-
 	<build>
 		<plugins>
 			<plugin>
