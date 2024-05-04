@@ -1,7 +1,6 @@
 package com.turkcell.pair8.productservice.entities;
 
-import com.turkcell.pair8.customerservice.entities.Customer;
-import com.turkcell.pair8.productservice.core.entities.BaseEntity;
+import com.turkcell.pair8.core.entities.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
