@@ -2,8 +2,10 @@ package com.turkcell.pair8.productservice.services.concretes;
 
 import com.turkcell.pair8.productservice.entities.Cart;
 import com.turkcell.pair8.productservice.repositories.CartRepository;
+import com.turkcell.pair8.productservice.services.abstracts.CartService;
 import com.turkcell.pair8.productservice.services.dtos.cart.requests.AddCartRequest;
 import com.turkcell.pair8.productservice.services.dtos.cart.requests.UpdateCartRequest;
+import com.turkcell.pair8.productservice.services.dtos.cart.responses.AddCartResponse;
 import com.turkcell.pair8.productservice.services.mappers.CartMapper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,7 @@ import java.util.Optional;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class CartServiceImpl {
+public class CartServiceImpl implements CartService{
     private final CartRepository cartRepository;
     public Optional<Cart> getCart(int customerId) {
         return cartRepository.findByCustomerId(customerId);
@@ -27,9 +29,9 @@ public class CartServiceImpl {
         Cart cart = CartMapper.INSTANCE.updateCartRequest(request);
         cartRepository.save(cart);
     }
-    public AddCartRequest add(AddCartRequest request){
+    public AddCartResponse add(AddCartRequest request){
         Cart cart = CartMapper.INSTANCE.addCartRequest(request);
         cartRepository.save(cart);
-        return request;
+        return CartMapper.INSTANCE.responseFromAddRequest(cart);
     }
 }

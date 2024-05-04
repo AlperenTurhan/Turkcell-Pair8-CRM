@@ -2,6 +2,7 @@ package com.turkcell.pair8.productservice.services.concretes;
 
 import com.turkcell.pair8.productservice.entities.Category;
 import com.turkcell.pair8.productservice.repositories.CategoryRepository;
+import com.turkcell.pair8.productservice.services.abstracts.CategoryService;
 import com.turkcell.pair8.productservice.services.dtos.category.requests.AddCategoryRequest;
 import com.turkcell.pair8.productservice.services.dtos.category.requests.UpdateCategoryRequest;
 import com.turkcell.pair8.productservice.services.dtos.category.responses.AddCategoryResponse;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class CategoryServiceImpl {
+public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
 
     public void update(UpdateCategoryRequest request) {

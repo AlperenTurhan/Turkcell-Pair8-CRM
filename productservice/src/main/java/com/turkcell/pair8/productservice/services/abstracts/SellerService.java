@@ -22,6 +22,7 @@ public interface SellerService {
     AddSellerResponse add(AddSellerRequest request);
 
     void update(UpdateSellerRequest request);
+
     Optional<Seller> getSeller(String sellerID);
 }
 

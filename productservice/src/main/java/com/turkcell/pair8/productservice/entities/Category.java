@@ -22,11 +22,6 @@ public class Category extends BaseEntity {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @ManyToMany
-    @JoinTable(
-            name = "products_categories",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
+    @ManyToMany(mappedBy = "categories")
     private Set<Product> products;
 }

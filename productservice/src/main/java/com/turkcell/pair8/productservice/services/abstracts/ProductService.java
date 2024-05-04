@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
-    List<SearchProductResponse> search(SearchProductRequest request);
-
+    SearchProductResponse getAll(SearchProductRequest request);
     AddProductResponse add(AddProductRequest request);
 
     void update(UpdateProductRequest request);
