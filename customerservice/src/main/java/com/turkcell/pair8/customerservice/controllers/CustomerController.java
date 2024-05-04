@@ -38,7 +38,7 @@ public class CustomerController {
 
     @GetMapping("getAll")
     @ResponseStatus(HttpStatus.OK)
-    public List<GetAllCustomerResponse> getAll(@RequestParam int page, @RequestParam int size)
+    public List<GetAllCustomerResponse> getAll(@RequestParam (defaultValue = "0") int page, @RequestParam (defaultValue = "10") int size)
     {
         PageInfo pageInfo = new PageInfo(page, size);
         return customerService.getAll(pageInfo);
