@@ -1,10 +1,8 @@
 package com.turkcell.pair8.customerservice.controllers;
 
 import com.turkcell.pair8.customerservice.services.abstracts.AddressService;
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.AddContactRequest;
 import com.turkcell.pair8.customerservice.services.dtos.address.request.AddAddressRequest;
 import com.turkcell.pair8.customerservice.services.dtos.address.request.UpdateAddressRequest;
-import com.turkcell.pair8.customerservice.services.dtos.customer.request.AddCustomerRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

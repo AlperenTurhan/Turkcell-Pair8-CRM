@@ -1,10 +1,5 @@
-package com.turkcell.pair8.customerservice.services.dtos.Contact.request;
+package com.turkcell.pair8.customerservice.services.dtos.contact.request;
 
-import com.turkcell.pair8.customerservice.entities.Customer;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

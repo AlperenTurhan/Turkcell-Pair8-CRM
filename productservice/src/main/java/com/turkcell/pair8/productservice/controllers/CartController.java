@@ -1,6 +1,5 @@
 package com.turkcell.pair8.productservice.controllers;
 
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.UpdateContactRequest;
 import com.turkcell.pair8.productservice.entities.Cart;
 import com.turkcell.pair8.productservice.services.abstracts.CartService;
 import com.turkcell.pair8.productservice.services.dtos.cart.requests.AddCartRequest;

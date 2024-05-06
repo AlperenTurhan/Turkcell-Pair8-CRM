@@ -11,7 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableFeignClients
 @EnableSecurity
-@ComponentScan(basePackages = "com.turkcell.pair8.core.services")
 public class CustomerserviceApplication {
 
 	public static void main(String[] args) {
