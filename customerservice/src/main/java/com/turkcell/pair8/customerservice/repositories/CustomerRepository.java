@@ -6,6 +6,7 @@ import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchC
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import feign.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -27,4 +28,8 @@ public interface CustomerRepository extends JpaRepository<IndividualCustomer, In
     boolean existsByNationalityID(String nationalityID);
 
     Optional<IndividualCustomer> findByNationalityID(String nationalityID); //optinal kullanmamızın sebebi null dönme ihtimali olmasıdır.
+
+    @Modifying
+    @Query("UPDATE Customer c SET c.deleted = true, c.deletedDate = CURRENT_TIMESTAMP WHERE c.id = :id")
+    void deleteById(@Param("id") int id);
 }
