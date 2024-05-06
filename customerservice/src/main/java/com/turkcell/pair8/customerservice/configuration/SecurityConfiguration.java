@@ -21,7 +21,7 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(HttpMethod.DELETE, "/api/customers/delete/**").hasAnyAuthority("admin")
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 );
         return http.build();
     }

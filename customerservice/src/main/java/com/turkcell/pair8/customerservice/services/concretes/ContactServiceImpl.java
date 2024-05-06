@@ -1,6 +1,7 @@
 package com.turkcell.pair8.customerservice.services.concretes;
 
 import com.turkcell.pair8.core.exception.types.BusinessException;
+import com.turkcell.pair8.core.services.MessageService;
 import com.turkcell.pair8.customerservice.entities.Contact;
 import com.turkcell.pair8.customerservice.repositories.ContactRepository;
 import com.turkcell.pair8.customerservice.services.abstracts.ContactService;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService {
     private final ContactRepository contactRepository;
+    private final MessageService messageService;
     @Override
     public Optional<Contact> getContact(int customerId) {
         return contactRepository.findByCustomerId(customerId);
@@ -30,7 +32,7 @@ public class ContactServiceImpl implements ContactService {
     public void update(UpdateContactRequest request) {
 
         Contact contact = contactRepository.findByCustomerId(request.getCustomerId())
-                .orElseThrow(() -> new BusinessException(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR));
+                .orElseThrow(() -> new BusinessException(messageService.getMessage(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR)));
 
         ContactMapper.INSTANCE.updateContactFromRequest(request, contact);
         contactRepository.save(contact);

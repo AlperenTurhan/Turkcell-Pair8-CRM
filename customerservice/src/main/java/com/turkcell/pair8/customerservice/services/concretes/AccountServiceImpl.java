@@ -2,6 +2,7 @@ package com.turkcell.pair8.customerservice.services.concretes;
 
 import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.core.exception.types.BusinessException;
+import com.turkcell.pair8.core.services.MessageService;
 import com.turkcell.pair8.customerservice.entities.Account;
 import com.turkcell.pair8.customerservice.entities.AccountStatus;
 import com.turkcell.pair8.customerservice.entities.AccountType;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
     private final CustomerBusinessRules customerBusinessRules;
+    private final MessageService messageService;
 
     @Override
     public List<GetAllAccountResponse> getAll(PageInfo pageInfo) {
@@ -50,7 +52,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void delete(int id) { // TODO: Hesaba bağlı ürün kontrolü yapılacak
         if (!isIdExist(id)) {
-            throw new BusinessException(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR);
+            throw new BusinessException(messageService.getMessage(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR));
         }
         accountRepository.deleteById(id);
     }

@@ -2,6 +2,7 @@ package com.turkcell.pair8.customerservice.services.concretes;
 
 import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.core.exception.types.BusinessException;
+import com.turkcell.pair8.core.services.MessageService;
 import com.turkcell.pair8.customerservice.entities.IndividualCustomer;
 import com.turkcell.pair8.customerservice.repositories.CustomerRepository;
 import com.turkcell.pair8.customerservice.services.abstracts.CustomerService;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final CustomerBusinessRules customerBusinessRules;
+    private final MessageService messageService;
 
     @Override
     public List<SearchCustomerResponse> search(SearchCustomerRequest request) {
@@ -54,7 +56,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void delete(int id) {
         if (!isIdExist(id)) {
-            throw new BusinessException(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR);
+            throw new BusinessException(messageService.getMessageWithArgs(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR, id));
         }
         customerRepository.deleteById(id);
     }
@@ -62,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void update(UpdateCustomerRequest request) {
         IndividualCustomer customer = customerRepository.findByNationalityID(request.getNationalityID())
-                .orElseThrow(() -> new BusinessException(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR));
+                .orElseThrow(() -> new BusinessException(messageService.getMessage(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR)));
 
         CustomerMapper.INSTANCE.updateCustomerFromRequest(request, customer);
         customerRepository.save(customer);
