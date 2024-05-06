@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "customers") //Veritabanında tablo adı
 @Inheritance(strategy = InheritanceType.JOINED)//Her alt sınıf için ayrı tablo oluşturur.
+@SQLDelete(sql = "UPDATE customers SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class Customer extends BaseEntity {
     @Column(name = "customer_id", nullable = false, unique = true)
     private String customerID;
@@ -28,4 +32,7 @@ public class Customer extends BaseEntity {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Account> accounts;
+
+    @Column(name = "deleted")
+    private boolean deleted = Boolean.FALSE;
 }

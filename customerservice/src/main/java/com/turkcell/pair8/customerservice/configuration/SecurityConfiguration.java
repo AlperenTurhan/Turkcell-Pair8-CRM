@@ -20,7 +20,7 @@ public class SecurityConfiguration {
         baseSecurityService.configureCoreSecurity(http);
         http
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers(HttpMethod.DELETE, "/api/customers/delete/**").hasAnyAuthority("admin")
+                        //.requestMatchers(HttpMethod.DELETE, "/api/customers/delete/**").hasAnyAuthority("admin")
                         .anyRequest().permitAll()
                 );
         return http.build();
