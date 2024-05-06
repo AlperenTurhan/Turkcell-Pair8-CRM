@@ -1,8 +1,8 @@
 package com.turkcell.pair8.customerservice.services.abstracts;
 
 import com.turkcell.pair8.customerservice.entities.Contact;
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.AddContactRequest;
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.UpdateContactRequest;
+import com.turkcell.pair8.customerservice.services.dtos.contact.request.AddContactRequest;
+import com.turkcell.pair8.customerservice.services.dtos.contact.request.UpdateContactRequest;
 
 import java.util.Optional;
 

@@ -1,14 +1,14 @@
 package com.turkcell.pair8.customerservice.services.concretes;
 
 import com.turkcell.pair8.core.exception.types.BusinessException;
-import com.turkcell.pair8.core.services.abstracts.MessageService;
-import com.turkcell.pair8.core.services.constants.Messages;
+import com.turkcell.pair8.core.services.MessageService;
 import com.turkcell.pair8.customerservice.entities.Address;
 import com.turkcell.pair8.customerservice.repositories.AddressRepository;
 import com.turkcell.pair8.customerservice.services.abstracts.AddressService;
 import com.turkcell.pair8.customerservice.services.dtos.address.request.AddAddressRequest;
 import com.turkcell.pair8.customerservice.services.dtos.address.request.UpdateAddressRequest;
 import com.turkcell.pair8.customerservice.services.mappers.AddressMapper;
+import com.turkcell.pair8.customerservice.services.messages.CustomerMessages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public void delete(int id) {
         if (!isIdExist(id)) {
-            throw new BusinessException(messageService.getMessageWithArgs(Messages.BusinessErrors.NOT_FOUND_ERROR, id));
+            throw new BusinessException(messageService.getMessageWithArgs(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR, id));
         }
         addressRepository.deleteById(id);
     }

@@ -4,12 +4,15 @@ import com.turkcell.pair8.core.exception.details.BusinessProblemDetails;
 import com.turkcell.pair8.core.exception.details.ProblemDetails;
 import com.turkcell.pair8.core.exception.details.ValidationProblemDetails;
 import com.turkcell.pair8.core.exception.types.BusinessException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.List;
+import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

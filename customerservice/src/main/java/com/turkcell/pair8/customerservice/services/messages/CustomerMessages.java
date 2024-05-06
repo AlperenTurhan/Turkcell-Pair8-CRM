@@ -1,6 +1,6 @@
-package com.turkcell.pair8.core.services.constants;
+package com.turkcell.pair8.customerservice.services.messages;
 
-public class Messages {
+public class CustomerMessages {
     public static class ValidationErrors {
         public static final String VALIDATION_NOT_BLANK = "validation.notBlank";
         public static final String VALIDATION_LENGTH = "validation.length";

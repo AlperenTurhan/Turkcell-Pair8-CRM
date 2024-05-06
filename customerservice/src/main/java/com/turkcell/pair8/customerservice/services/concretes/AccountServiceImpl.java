@@ -2,8 +2,7 @@ package com.turkcell.pair8.customerservice.services.concretes;
 
 import com.pair4.paging.PageInfo;
 import com.turkcell.pair8.core.exception.types.BusinessException;
-import com.turkcell.pair8.core.services.abstracts.MessageService;
-import com.turkcell.pair8.core.services.constants.Messages;
+import com.turkcell.pair8.core.services.MessageService;
 import com.turkcell.pair8.customerservice.entities.Account;
 import com.turkcell.pair8.customerservice.entities.AccountStatus;
 import com.turkcell.pair8.customerservice.entities.AccountType;
@@ -14,6 +13,7 @@ import com.turkcell.pair8.customerservice.services.dtos.account.request.UpdateAc
 import com.turkcell.pair8.customerservice.services.dtos.account.response.AddAccountResponse;
 import com.turkcell.pair8.customerservice.services.dtos.account.response.GetAllAccountResponse;
 import com.turkcell.pair8.customerservice.services.mappers.AccountMapper;
+import com.turkcell.pair8.customerservice.services.messages.CustomerMessages;
 import com.turkcell.pair8.customerservice.services.rules.CustomerBusinessRules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -52,7 +52,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void delete(int id) { // TODO: Hesaba bağlı ürün kontrolü yapılacak
         if (!isIdExist(id)) {
-            throw new BusinessException(messageService.getMessageWithArgs(Messages.BusinessErrors.NOT_FOUND_ERROR, id));
+            throw new BusinessException(messageService.getMessage(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR));
         }
         accountRepository.deleteById(id);
     }

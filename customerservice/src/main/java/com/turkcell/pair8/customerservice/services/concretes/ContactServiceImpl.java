@@ -1,15 +1,17 @@
 package com.turkcell.pair8.customerservice.services.concretes;
 
 import com.turkcell.pair8.core.exception.types.BusinessException;
-import com.turkcell.pair8.core.services.abstracts.MessageService;
-import com.turkcell.pair8.core.services.constants.Messages;
+import com.turkcell.pair8.core.services.MessageService;
 import com.turkcell.pair8.customerservice.entities.Contact;
 import com.turkcell.pair8.customerservice.repositories.ContactRepository;
 import com.turkcell.pair8.customerservice.services.abstracts.ContactService;
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.AddContactRequest;
-import com.turkcell.pair8.customerservice.services.dtos.Contact.request.UpdateContactRequest;
+import com.turkcell.pair8.customerservice.services.dtos.contact.request.AddContactRequest;
+import com.turkcell.pair8.customerservice.services.dtos.contact.request.UpdateContactRequest;
 import com.turkcell.pair8.customerservice.services.mappers.ContactMapper;
-import lombok.*;
+import com.turkcell.pair8.customerservice.services.messages.CustomerMessages;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,8 +21,8 @@ import java.util.Optional;
 @Setter
 @RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService {
-    private final MessageService messageService;
     private final ContactRepository contactRepository;
+    private final MessageService messageService;
     @Override
     public Optional<Contact> getContact(int customerId) {
         return contactRepository.findByCustomerId(customerId);
@@ -30,7 +32,7 @@ public class ContactServiceImpl implements ContactService {
     public void update(UpdateContactRequest request) {
 
         Contact contact = contactRepository.findByCustomerId(request.getCustomerId())
-                .orElseThrow(() -> new BusinessException(messageService.getMessageWithArgs(Messages.BusinessErrors.NOT_FOUND_ERROR, request.getCustomerId())));
+                .orElseThrow(() -> new BusinessException(messageService.getMessage(CustomerMessages.BusinessErrors.NOT_FOUND_ERROR)));
 
         ContactMapper.INSTANCE.updateContactFromRequest(request, contact);
         contactRepository.save(contact);

@@ -1,6 +1,7 @@
 package com.turkcell.pair8.customerservice.repositories;
 
 import com.turkcell.pair8.customerservice.entities.Customer;
+import com.turkcell.pair8.customerservice.entities.IndividualCustomer;
 import com.turkcell.pair8.customerservice.services.dtos.customer.request.SearchCustomerRequest;
 import com.turkcell.pair8.customerservice.services.dtos.customer.response.SearchCustomerResponse;
 import feign.Param;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+public interface CustomerRepository extends JpaRepository<IndividualCustomer, Integer> {
 
     @Query("Select new com.turkcell.pair8.customerservice.services.dtos.customer.response." +
             "SearchCustomerResponse(c.customerID, c.firstName, c.middleName, c.lastName, c.nationalityID)" +
@@ -25,6 +26,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     boolean existsByNationalityID(String nationalityID);
 
-
-    Optional<Customer> findByNationalityID(String nationalityID); //optinal kullanmamızın sebebi null dönme ihtimali olmasıdır.
+    Optional<IndividualCustomer> findByNationalityID(String nationalityID); //optinal kullanmamızın sebebi null dönme ihtimali olmasıdır.
 }
